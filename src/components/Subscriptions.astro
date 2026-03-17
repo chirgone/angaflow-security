@@ -1,0 +1,85 @@
+---
+import { type Locale, useTranslations } from '@i18n/utils';
+import SubscribeButton from './SubscribeButton';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const planIcons = ['eye', 'shield', 'lock'];
+const planColors = ['text-primary', 'text-secondary', 'text-accent'];
+const planIds = ['watch', 'guard', 'shield'] as const;
+---
+
+<section class="relative py-24 lg:py-32">
+  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-secondary/[0.02] to-transparent"></div>
+
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <!-- Overline & Title -->
+    <div class="text-center mb-16 reveal">
+      <span class="text-xs font-semibold uppercase tracking-widest text-secondary">{t.subscriptions.overline}</span>
+      <div class="mt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
+          {t.subscriptions.title}
+        </h2>
+        <span class="inline-flex items-center rounded-full bg-gradient-to-r from-warning to-orange-500 px-5 py-2 text-sm font-bold text-white shadow-lg animate-pulse">
+          {lang === 'es' ? 'Próximamente' : 'Coming Soon'}
+        </span>
+      </div>
+      <p class="mt-4 text-lg text-text-secondary max-w-2xl mx-auto">{t.subscriptions.subtitle}</p>
+      <div class="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-secondary/10 to-accent/10 border border-secondary/30">
+        <svg class="w-4 h-4 text-secondary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+        </svg>
+        <span class="text-sm font-medium text-text-primary">{t.subscriptions.coming_soon_badge}</span>
+      </div>
+    </div>
+
+    <!-- Plans -->
+    <div class="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
+      {t.subscriptions.plans.map((plan, i) => (
+        <div class={`reveal relative rounded-2xl border ${plan.popular ? 'border-secondary/50 bg-gradient-to-b from-secondary/5 to-bg-surface' : 'border-border bg-bg-surface'} p-8 flex flex-col`}>
+          {plan.popular && (
+            <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
+              <span class="inline-flex items-center rounded-full bg-gradient-to-r from-secondary to-accent px-4 py-1 text-xs font-bold text-white shadow-lg">
+                {lang === 'es' ? 'Recomendado' : 'Recommended'}
+              </span>
+            </div>
+          )}
+
+          <h3 class={`text-2xl font-bold mb-2 ${planColors[i]}`}>{plan.name}</h3>
+
+          <div class="mb-6">
+            <div class="flex items-baseline gap-1">
+              <span class="text-4xl font-extrabold font-mono">{plan.price}</span>
+              <span class="text-sm text-text-muted">MXN{plan.period}</span>
+            </div>
+            <div class="text-xs text-text-muted mt-1">{plan.price_usd}{plan.period}</div>
+          </div>
+
+          <ul class="space-y-3 mb-8 flex-1">
+            {plan.features.map((feature) => (
+              <li class="flex items-start gap-3">
+                <svg class={`w-5 h-5 mt-0.5 flex-shrink-0 ${planColors[i]}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                <span class="text-sm text-text-secondary">{feature}</span>
+              </li>
+            ))}
+          </ul>
+
+          <SubscribeButton
+            planId={planIds[i]}
+            lang={lang}
+            label={lang === 'es' ? 'Suscribirse' : 'Subscribe'}
+            className="block w-full text-center rounded-xl py-3 px-6 text-sm font-bold border-2 border-secondary text-white bg-gradient-to-r from-secondary to-accent hover:scale-[1.02] transition-all shadow-lg shadow-secondary/25 cursor-pointer"
+            client:only="react"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

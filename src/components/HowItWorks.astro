@@ -1,0 +1,44 @@
+---
+import { type Locale, useTranslations } from '@i18n/utils';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="how-it-works" class="relative py-24 lg:py-32">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <!-- Overline & Title -->
+    <div class="text-center mb-16 reveal">
+      <span class="text-xs font-semibold uppercase tracking-widest text-primary">{t.howItWorks.overline}</span>
+      <h2 class="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
+        {t.howItWorks.title}
+      </h2>
+    </div>
+
+    <!-- Steps -->
+    <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
+      {t.howItWorks.steps.map((step, i) => (
+        <div class="reveal relative">
+          {/* Connector line */}
+          {i < 2 && (
+            <div class="hidden md:block absolute top-12 left-full w-full h-px bg-gradient-to-r from-primary/50 to-transparent -translate-x-8"></div>
+          )}
+
+          <div class="text-center">
+            {/* Step number */}
+            <div class="inline-flex items-center justify-center w-24 h-24 rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 border border-primary/20 mb-6">
+              <span class="text-3xl font-extrabold font-mono text-gradient">{step.number}</span>
+            </div>
+
+            <h3 class="text-xl font-bold mb-3">{step.title}</h3>
+            <p class="text-text-secondary leading-relaxed">{step.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,58 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+
+const lang = 'es' as const;
+---
+
+<Layout lang={lang}>
+  <Header lang={lang} />
+  <main class="py-24 lg:py-32">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-8">Pol&iacute;tica de Reembolsos y Cr&eacute;ditos</h1>
+      <p class="text-sm text-text-muted mb-8">&Uacute;ltima actualizaci&oacute;n: 11 de marzo de 2026</p>
+
+      <div class="prose prose-invert max-w-none space-y-6 text-text-secondary leading-relaxed">
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">1. Compras finales</h2>
+        <p>Todas las compras realizadas en Anga Security son <strong>finales</strong>. No se otorgan reembolsos en efectivo, transferencia bancaria ni ning&uacute;n otro medio monetario.</p>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">2. Vigencia de cr&eacute;ditos</h2>
+        <p>Los cr&eacute;ditos adquiridos en Anga Security <strong>no expiran</strong>. Puedes utilizarlos en cualquier momento para generar reportes de auditor&iacute;a, simulaciones de ataque, an&aacute;lisis de compliance y sesiones de consultor&iacute;a.</p>
+        <div class="p-4 rounded-xl mt-4" style="background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.15);">
+          <p class="text-sm" style="color: #22c55e;"><strong>Tus cr&eacute;ditos nunca expiran.</strong> Usa tus cr&eacute;ditos cuando los necesites, sin presi&oacute;n de tiempo.</p>
+        </div>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">3. Reembolsos (solo en cr&eacute;ditos)</h2>
+        <p>Si compraste cr&eacute;ditos y <strong>NO los has utilizado</strong>, puedes solicitar un reembolso <strong>&uacute;nicamente en forma de cr&eacute;ditos</strong> dentro de los primeros <strong>7 d&iacute;as naturales</strong> de tu compra.</p>
+        <div class="p-4 rounded-xl mt-4" style="background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.15);">
+          <p class="text-sm" style="color: #fbbf24;"><strong>Importante:</strong> Los reembolsos NO se otorgan en efectivo, transferencia bancaria ni ning&uacute;n otro medio monetario. Solo se emiten como cr&eacute;ditos en tu cuenta de Anga Security.</p>
+        </div>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">4. Cr&eacute;ditos ya utilizados</h2>
+        <p>Los cr&eacute;ditos que ya fueron consumidos para generar reportes (auditor&iacute;as, simulaciones, compliance) <strong>no son reembolsables</strong> bajo ninguna circunstancia, ni en efectivo ni en cr&eacute;ditos.</p>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">5. Reportes defectuosos</h2>
+        <p>Si un reporte no se genera correctamente debido a una falla t&eacute;cnica de nuestra plataforma:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong>Opci&oacute;n A:</strong> Reposici&oacute;n gratuita del reporte (sin costo de cr&eacute;ditos).</li>
+          <li><strong>Opci&oacute;n B:</strong> Devoluci&oacute;n de los cr&eacute;ditos utilizados a tu cuenta.</li>
+        </ul>
+        <p>Para solicitar la reposici&oacute;n, debes notificarnos dentro de las 48 horas siguientes a la generaci&oacute;n del reporte defectuoso.</p>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">6. C&oacute;mo solicitar un reembolso</h2>
+        <p>Env&iacute;a tu solicitud a:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong>Email:</strong> <a href="mailto:seguridad@angaflow.com" class="text-primary hover:underline">seguridad@angaflow.com</a></li>
+          <li><strong>WhatsApp:</strong> <a href="https://wa.me/525551575041" class="text-primary hover:underline">+52 55 5157 5041</a></li>
+        </ul>
+        <p>Incluye tu email de cuenta, fecha de compra y motivo de la solicitud. Tiempo de respuesta: 24-48 horas h&aacute;biles.</p>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">7. Contacto</h2>
+        <p>Para cualquier consulta sobre reembolsos o cr&eacute;ditos: <a href="mailto:seguridad@angaflow.com" class="text-primary hover:underline">seguridad@angaflow.com</a></p>
+      </div>
+    </div>
+  </main>
+  <Footer lang={lang} />
+</Layout>

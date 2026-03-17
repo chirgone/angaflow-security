@@ -1,0 +1,173 @@
+---
+import Layout from '@layouts/Layout.astro';
+const lang = 'es' as const;
+---
+
+<Layout lang={lang}>
+  <div class="min-h-screen flex items-center justify-center px-4" style="background: #0a0a0f;">
+    <div id="payment-status" class="max-w-md w-full text-center">
+
+      <!-- Estado: Verificando (visible por defecto) -->
+      <div id="state-loading">
+        <div class="mx-auto w-20 h-20 rounded-full flex items-center justify-center mb-6" style="background: rgba(6,182,212,0.1); border: 2px solid rgba(6,182,212,0.3);">
+          <svg class="w-10 h-10 animate-spin" style="color: #06b6d4;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
+          </svg>
+        </div>
+        <h1 class="text-2xl font-bold text-white mb-2">Verificando tu pago...</h1>
+        <p class="text-sm" style="color: #64748b;">Esto puede tomar unos segundos.</p>
+      </div>
+
+      <!-- Estado: Éxito (oculto por defecto) -->
+      <div id="state-success" style="display:none;">
+        <div class="mx-auto w-20 h-20 rounded-full flex items-center justify-center mb-6" style="background: rgba(34,197,94,0.1); border: 2px solid rgba(34,197,94,0.3);">
+          <svg class="w-10 h-10" style="color: #22c55e;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6 9 17l-5-5"/>
+          </svg>
+        </div>
+        <h1 class="text-3xl font-bold text-white mb-3">¡Pago Exitoso!</h1>
+        <p class="text-lg mb-1" style="color: #94a3b8;">Tus créditos han sido acreditados a tu cuenta.</p>
+        <p id="credits-added" class="text-sm font-semibold mb-6" style="color: #06b6d4;"></p>
+        <div class="space-y-3">
+          <a href="/es/dashboard" class="block w-full py-3 rounded-lg font-semibold text-white text-center transition-all hover:scale-[1.02]" style="background: linear-gradient(135deg, #06b6d4, #3b82f6);">
+            Ir al Dashboard
+          </a>
+          <a href="/es/" class="block w-full py-3 rounded-lg font-medium text-center transition-all" style="color: #94a3b8; border: 1px solid #1e293b;">
+            Volver al inicio
+          </a>
+        </div>
+      </div>
+
+      <!-- Estado: Pendiente (oculto por defecto) -->
+      <div id="state-pending" style="display:none;">
+        <div class="mx-auto w-20 h-20 rounded-full flex items-center justify-center mb-6" style="background: rgba(234,179,8,0.1); border: 2px solid rgba(234,179,8,0.3);">
+          <svg class="w-10 h-10" style="color: #eab308;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+        </div>
+        <h1 class="text-2xl font-bold text-white mb-3">Pago en proceso</h1>
+        <p class="text-base mb-2" style="color: #94a3b8;">Tu pago está siendo procesado por MercadoPago.</p>
+        <p class="text-sm mb-8" style="color: #64748b;">Los créditos se acreditarán automáticamente en cuanto se confirme. Puede tomar hasta 5 minutos.</p>
+        <div class="space-y-3">
+          <a href="/es/dashboard" class="block w-full py-3 rounded-lg font-semibold text-white text-center transition-all hover:scale-[1.02]" style="background: linear-gradient(135deg, #06b6d4, #3b82f6);">
+            Ir al Dashboard
+          </a>
+        </div>
+      </div>
+
+      <!-- Estado: Error (oculto por defecto) -->
+      <div id="state-error" style="display:none;">
+        <div class="mx-auto w-20 h-20 rounded-full flex items-center justify-center mb-6" style="background: rgba(239,68,68,0.1); border: 2px solid rgba(239,68,68,0.3);">
+          <svg class="w-10 h-10" style="color: #ef4444;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>
+          </svg>
+        </div>
+        <h1 class="text-2xl font-bold text-white mb-3">No pudimos verificar tu pago</h1>
+        <p class="text-base mb-2" style="color: #94a3b8;">Si realizaste el pago, los créditos se acreditarán automáticamente en cuanto MercadoPago lo confirme.</p>
+        <p class="text-sm mb-8" style="color: #64748b;">Si el problema persiste, contáctanos con tu número de pago.</p>
+        <div class="space-y-3">
+          <a href="/es/dashboard" class="block w-full py-3 rounded-lg font-semibold text-white text-center transition-all hover:scale-[1.02]" style="background: linear-gradient(135deg, #06b6d4, #3b82f6);">
+            Ir al Dashboard
+          </a>
+          <a href="mailto:seguridad@angaflow.com" class="block w-full py-3 rounded-lg font-medium text-center transition-all" style="color: #94a3b8; border: 1px solid #1e293b;">
+            Contactar soporte
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</Layout>
+
+<script>
+  import { createClient } from '@supabase/supabase-js';
+
+  const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL || 'https://xlhdhxfknqjqzdohtlii.supabase.co';
+  const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhsaGRoeGZrbnFqcXpkb2h0bGlpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI5MDU5ODksImV4cCI6MjA4ODQ4MTk4OX0.40ezSAGTxPA-OrlvvJEWUerDoN8iZmIZveHhIwtoRQM';
+  const API_URL = import.meta.env.PUBLIC_API_URL || 'https://api.angaflow.com';
+
+  function show(id: string) {
+    ['state-loading','state-success','state-pending','state-error'].forEach(s => {
+      (document.getElementById(s) as HTMLElement).style.display = s === id ? '' : 'none';
+    });
+  }
+
+  async function verifyPayment() {
+    // Read MercadoPago query params
+    const params = new URLSearchParams(window.location.search);
+    const collectionStatus = params.get('collection_status') || params.get('status');
+    const paymentId = params.get('collection_id') || params.get('payment_id');
+
+    // If MP says not approved, show appropriate state immediately
+    if (collectionStatus && collectionStatus !== 'approved') {
+      show('state-pending');
+      return;
+    }
+
+    // Get current user session
+    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    const { data: { session } } = await supabase.auth.getSession();
+
+    if (!session?.access_token) {
+      // Not logged in — just show success (they came from MP, payment exists)
+      show('state-success');
+      return;
+    }
+
+    // Get initial balance before polling
+    let initialBalance = 0;
+    try {
+      const res = await fetch(`${API_URL}/api/account`, {
+        headers: { 'Authorization': `Bearer ${session.access_token}` }
+      });
+      if (res.ok) {
+        const data = await res.json();
+        initialBalance = parseFloat(data.account?.credit_balance) || 0;
+      }
+    } catch {}
+
+    // Poll for up to 15 seconds (5 attempts, 3s apart)
+    const MAX_ATTEMPTS = 5;
+    const INTERVAL_MS = 3000;
+
+    for (let i = 0; i < MAX_ATTEMPTS; i++) {
+      await new Promise(r => setTimeout(r, INTERVAL_MS));
+
+      try {
+        const res = await fetch(`${API_URL}/api/account`, {
+          headers: { 'Authorization': `Bearer ${session.access_token}` }
+        });
+        if (!res.ok) continue;
+
+        const data = await res.json();
+        const newBalance = parseFloat(data.account?.credit_balance) || 0;
+
+        if (newBalance > initialBalance) {
+          const added = newBalance - initialBalance;
+          const el = document.getElementById('credits-added');
+          if (el) el.textContent = `+${added.toLocaleString()} créditos agregados a tu cuenta`;
+          // GA4 event: purchase (conversion)
+          if (typeof (window as any).gtag === 'function') {
+            (window as any).gtag('event', 'purchase', {
+              currency: 'MXN',
+              value: added, // credits as proxy for value
+              transaction_id: paymentId || `tx_${Date.now()}`,
+              items: [{ item_id: 'credits', item_name: 'Créditos Anga', quantity: added }],
+            });
+          }
+          show('state-success');
+          return;
+        }
+      } catch {}
+    }
+
+    // If MP said approved but credits didn't appear, show pending
+    if (collectionStatus === 'approved') {
+      show('state-pending');
+    } else {
+      show('state-error');
+    }
+  }
+
+  verifyPayment().catch(() => show('state-error'));
+</script>

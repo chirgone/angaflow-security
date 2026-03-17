@@ -1,0 +1,63 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+
+const lang = 'es' as const;
+---
+
+<Layout lang={lang}>
+  <Header lang={lang} />
+  <main class="py-24 lg:py-32">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-8">Pol&iacute;tica de Cancelaci&oacute;n</h1>
+      <p class="text-sm text-text-muted mb-8">&Uacute;ltima actualizaci&oacute;n: 11 de marzo de 2026</p>
+
+      <div class="prose prose-invert max-w-none space-y-6 text-text-secondary leading-relaxed">
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">1. Cancelaci&oacute;n de cuenta</h2>
+        <p>Puedes solicitar la cancelaci&oacute;n y eliminaci&oacute;n de tu cuenta en cualquier momento enviando un correo a <a href="mailto:seguridad@angaflow.com" class="text-primary hover:underline">seguridad@angaflow.com</a> desde el correo electr&oacute;nico asociado a tu cuenta.</p>
+        <p>Al cancelar tu cuenta:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Tus datos personales ser&aacute;n eliminados de acuerdo con nuestra <a href="/es/privacidad" class="text-primary hover:underline">Pol&iacute;tica de Privacidad</a>.</li>
+          <li>Tus reportes generados ser&aacute;n eliminados permanentemente.</li>
+          <li><strong>Los cr&eacute;ditos no utilizados se perder&aacute;n.</strong> Aseg&uacute;rate de utilizar tus cr&eacute;ditos antes de cancelar.</li>
+        </ul>
+        <div class="p-4 rounded-xl mt-4" style="background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.15);">
+          <p class="text-sm" style="color: #fbbf24;"><strong>Importante:</strong> La eliminaci&oacute;n de cuenta es irreversible. Una vez procesada, no podremos recuperar tus reportes ni cr&eacute;ditos.</p>
+        </div>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">2. Cr&eacute;ditos al cancelar</h2>
+        <p>Los cr&eacute;ditos en tu cuenta <strong>no expiran mientras tu cuenta est&eacute; activa</strong>. Sin embargo, al solicitar la eliminaci&oacute;n de tu cuenta, todos los cr&eacute;ditos restantes se pierden. Te recomendamos:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Utilizar todos tus cr&eacute;ditos disponibles antes de solicitar la cancelaci&oacute;n.</li>
+          <li>Descargar todos los reportes que desees conservar.</li>
+        </ul>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">3. Cancelaci&oacute;n de suscripciones</h2>
+        <p>Las suscripciones de monitoreo continuo (Watch, Guard, Shield) est&aacute;n pr&oacute;ximamente disponibles. Cuando se activen, las pol&iacute;ticas de cancelaci&oacute;n de suscripciones ser&aacute;n:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong>Planes mensuales:</strong> Puedes cancelar en cualquier momento. Tu suscripci&oacute;n permanecer&aacute; activa hasta el final del periodo de facturaci&oacute;n actual.</li>
+          <li><strong>Planes anuales:</strong> Puedes cancelar en cualquier momento. Tu suscripci&oacute;n permanecer&aacute; activa hasta el final del periodo anual contratado. No se otorgan reembolsos parciales por periodos no utilizados.</li>
+        </ul>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">4. Proceso de cancelaci&oacute;n</h2>
+        <p>Para solicitar la cancelaci&oacute;n de tu cuenta o suscripci&oacute;n:</p>
+        <ol class="list-decimal pl-6 space-y-2">
+          <li>Env&iacute;a un correo a <a href="mailto:seguridad@angaflow.com" class="text-primary hover:underline">seguridad@angaflow.com</a> con el asunto &quot;Cancelaci&oacute;n de cuenta&quot;.</li>
+          <li>Incluye el correo electr&oacute;nico asociado a tu cuenta.</li>
+          <li>Recibirás una confirmaci&oacute;n dentro de 24-48 horas h&aacute;biles.</li>
+          <li>La eliminaci&oacute;n de datos se completar&aacute; dentro de 30 d&iacute;as naturales.</li>
+        </ol>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">5. Contacto</h2>
+        <p>Para cualquier consulta sobre cancelaciones:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong>Email:</strong> <a href="mailto:seguridad@angaflow.com" class="text-primary hover:underline">seguridad@angaflow.com</a></li>
+          <li><strong>WhatsApp:</strong> <a href="https://wa.me/525551575041" class="text-primary hover:underline">+52 55 5157 5041</a></li>
+        </ul>
+      </div>
+    </div>
+  </main>
+  <Footer lang={lang} />
+</Layout>

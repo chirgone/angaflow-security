@@ -1,0 +1,40 @@
+---
+import Layout from '@layouts/Layout.astro';
+
+const lang = 'en' as const;
+---
+
+<Layout lang={lang}>
+  <div class="min-h-screen flex items-center justify-center px-4" style="background: #0a0a0f;">
+    <div class="max-w-md w-full text-center">
+      <!-- Cancel Icon -->
+      <div class="mx-auto w-20 h-20 rounded-full flex items-center justify-center mb-6" style="background: rgba(239, 68, 68, 0.1); border: 2px solid rgba(239, 68, 68, 0.3);">
+        <svg class="w-10 h-10" style="color: #ef4444;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 6 6 18"/>
+          <path d="m6 6 12 12"/>
+        </svg>
+      </div>
+
+      <h1 class="text-3xl font-bold text-white mb-3">Payment Cancelled</h1>
+      <p class="text-lg mb-2" style="color: #94a3b8;">Your payment was not processed.</p>
+      <p class="text-sm mb-8" style="color: #64748b;">No charges were made to your card. You can try again whenever you like.</p>
+
+      <div class="space-y-3">
+        <a
+          href="/en/dashboard"
+          class="block w-full py-3 rounded-lg font-semibold text-white text-center transition-all hover:scale-[1.02]"
+          style="background: linear-gradient(135deg, #06b6d4, #3b82f6);"
+        >
+          Back to Dashboard
+        </a>
+        <a
+          href="/en/"
+          class="block w-full py-3 rounded-lg font-medium text-center transition-all"
+          style="color: #94a3b8; border: 1px solid #1e293b;"
+        >
+          Back to home
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,18 @@
+---
+import Layout from '@layouts/Layout.astro';
+
+const lang = 'es' as const;
+---
+
+<Layout lang={lang}>
+  <div id="dashboard-root"></div>
+</Layout>
+
+<script>
+  import { createElement } from 'react';
+  import { createRoot } from 'react-dom/client';
+  import DashboardComponent from '@components/Dashboard';
+
+  const root = createRoot(document.getElementById('dashboard-root')!);
+  root.render(createElement(DashboardComponent, { lang: 'es' }));
+</script>

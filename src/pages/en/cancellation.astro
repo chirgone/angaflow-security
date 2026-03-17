@@ -1,0 +1,63 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+
+const lang = 'en' as const;
+---
+
+<Layout lang={lang}>
+  <Header lang={lang} />
+  <main class="py-24 lg:py-32">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-8">Cancellation Policy</h1>
+      <p class="text-sm text-text-muted mb-8">Last updated: March 11, 2026</p>
+
+      <div class="prose prose-invert max-w-none space-y-6 text-text-secondary leading-relaxed">
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">1. Account cancellation</h2>
+        <p>You can request the cancellation and deletion of your account at any time by sending an email to <a href="mailto:seguridad@angaflow.com" class="text-primary hover:underline">seguridad@angaflow.com</a> from the email address associated with your account.</p>
+        <p>When you cancel your account:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Your personal data will be deleted in accordance with our <a href="/en/privacy" class="text-primary hover:underline">Privacy Policy</a>.</li>
+          <li>Your generated reports will be permanently deleted.</li>
+          <li><strong>Unused credits will be forfeited.</strong> Make sure to use your credits before canceling.</li>
+        </ul>
+        <div class="p-4 rounded-xl mt-4" style="background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.15);">
+          <p class="text-sm" style="color: #fbbf24;"><strong>Important:</strong> Account deletion is irreversible. Once processed, we cannot recover your reports or credits.</p>
+        </div>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">2. Credits upon cancellation</h2>
+        <p>Credits in your account <strong>never expire as long as your account is active</strong>. However, when you request account deletion, all remaining credits are forfeited. We recommend:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Using all available credits before requesting cancellation.</li>
+          <li>Downloading all reports you wish to keep.</li>
+        </ul>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">3. Subscription cancellation</h2>
+        <p>Continuous monitoring subscriptions (Watch, Guard, Shield) are coming soon. When activated, the subscription cancellation policies will be:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong>Monthly plans:</strong> You can cancel at any time. Your subscription will remain active until the end of the current billing period.</li>
+          <li><strong>Annual plans:</strong> You can cancel at any time. Your subscription will remain active until the end of the contracted annual period. No partial refunds are issued for unused periods.</li>
+        </ul>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">4. Cancellation process</h2>
+        <p>To request the cancellation of your account or subscription:</p>
+        <ol class="list-decimal pl-6 space-y-2">
+          <li>Send an email to <a href="mailto:seguridad@angaflow.com" class="text-primary hover:underline">seguridad@angaflow.com</a> with the subject &quot;Account Cancellation&quot;.</li>
+          <li>Include the email address associated with your account.</li>
+          <li>You will receive a confirmation within 24-48 business hours.</li>
+          <li>Data deletion will be completed within 30 calendar days.</li>
+        </ol>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">5. Contact</h2>
+        <p>For any inquiries about cancellations:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong>Email:</strong> <a href="mailto:seguridad@angaflow.com" class="text-primary hover:underline">seguridad@angaflow.com</a></li>
+          <li><strong>WhatsApp:</strong> <a href="https://wa.me/525551575041" class="text-primary hover:underline">+52 55 5157 5041</a></li>
+        </ul>
+      </div>
+    </div>
+  </main>
+  <Footer lang={lang} />
+</Layout>

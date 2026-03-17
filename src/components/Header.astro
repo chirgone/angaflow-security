@@ -1,0 +1,235 @@
+---
+import { type Locale, useTranslations, languages, getLocalePath } from '@i18n/utils';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const otherLang = lang === 'es' ? 'en' : 'es';
+---
+
+<header
+  id="header"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-between lg:h-20">
+      <!-- Logo -->
+      <a href={getLocalePath(lang)} class="flex items-center gap-2">
+        <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary">
+          <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <span class="text-lg font-bold text-text">Anga <span class="text-gradient">Security</span></span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-8">
+        <a href="#features" class="text-sm font-medium text-text-secondary hover:text-primary transition-colors">{t.nav.features}</a>
+        <a href="#pricing" class="text-sm font-medium text-text-secondary hover:text-primary transition-colors">{t.nav.pricing}</a>
+        <a href="#managed" class="text-sm font-medium text-text-secondary hover:text-primary transition-colors">{t.nav.managed}</a>
+        <a href="#consulting" class="text-sm font-medium text-text-secondary hover:text-primary transition-colors">{t.nav.consulting}</a>
+        <a href="#faq" class="text-sm font-medium text-text-secondary hover:text-primary transition-colors">{t.nav.faq}</a>
+      </nav>
+
+      <!-- Right side -->
+      <div class="flex items-center gap-3">
+        <!-- Language Switcher -->
+        <a
+          href={getLocalePath(otherLang)}
+          class="flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-xs font-medium text-text-secondary hover:text-text hover:border-primary/50 transition-all"
+        >
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            <path d="M2 12h20"/>
+          </svg>
+          {languages[otherLang]}
+        </a>
+
+        <!-- Login Button (shown when NOT logged in) -->
+        <a
+          id="header-login"
+          href={`/${lang}/login`}
+          class="hidden sm:inline-flex items-center gap-1.5 rounded-lg border border-border px-4 py-2 text-sm font-medium text-text-secondary hover:text-text hover:border-primary/50 transition-all"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+            <polyline points="10 17 15 12 10 7"/>
+            <line x1="15" x2="3" y1="12" y2="12"/>
+          </svg>
+          {t.nav.login}
+        </a>
+
+        <!-- CTA Button (shown when NOT logged in) -->
+        <a
+          id="header-cta"
+          href={`/${lang}/${lang === 'es' ? 'registro' : 'register'}`}
+          class="hidden sm:inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-primary to-secondary px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all hover:scale-[1.02]"
+        >
+          {t.nav.cta}
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"/>
+            <path d="m12 5 7 7-7 7"/>
+          </svg>
+        </a>
+
+        <!-- Admin Button (shown when logged in as admin, hidden by default) -->
+        <a
+          id="header-admin"
+          href={`/${lang}/admin`}
+          class="hidden items-center gap-2 rounded-lg border border-yellow-500/50 px-4 py-2 text-sm font-semibold text-yellow-400 hover:bg-yellow-500/10 transition-all"
+        >
+          Admin
+        </a>
+
+        <!-- Dashboard Button (shown when logged in, hidden by default) -->
+        <a
+          id="header-dashboard"
+          href={`/${lang}/dashboard`}
+          class="hidden items-center gap-2 rounded-lg bg-gradient-to-r from-primary to-secondary px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all hover:scale-[1.02]"
+        >
+          Dashboard
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="7" height="9" x="3" y="3" rx="1"/>
+            <rect width="7" height="5" x="14" y="3" rx="1"/>
+            <rect width="7" height="9" x="14" y="12" rx="1"/>
+            <rect width="7" height="5" x="3" y="16" rx="1"/>
+          </svg>
+        </a>
+
+        <!-- Mobile Menu Button -->
+        <button
+          id="mobile-menu-btn"
+          class="lg:hidden flex items-center justify-center w-10 h-10 rounded-lg border border-border text-text-secondary hover:text-text hover:border-primary/50 transition-all"
+          aria-label="Menu"
+        >
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" x2="20" y1="12" y2="12"/>
+            <line x1="4" x2="20" y1="6" y2="6"/>
+            <line x1="4" x2="20" y1="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden lg:hidden border-t border-border bg-bg/95 backdrop-blur-xl">
+    <div class="mx-auto max-w-7xl px-4 py-4 space-y-3">
+      <a href="#features" class="block text-sm font-medium text-text-secondary hover:text-primary py-2">{t.nav.features}</a>
+      <a href="#pricing" class="block text-sm font-medium text-text-secondary hover:text-primary py-2">{t.nav.pricing}</a>
+      <a href="#managed" class="block text-sm font-medium text-text-secondary hover:text-primary py-2">{t.nav.managed}</a>
+      <a href="#consulting" class="block text-sm font-medium text-text-secondary hover:text-primary py-2">{t.nav.consulting}</a>
+      <a href="#faq" class="block text-sm font-medium text-text-secondary hover:text-primary py-2">{t.nav.faq}</a>
+      <!-- Mobile Login (shown when NOT logged in) -->
+      <a
+        id="mobile-login"
+        href={`/${lang}/login`}
+        class="block w-full text-center rounded-lg border border-border px-4 py-2.5 text-sm font-medium text-text-secondary"
+      >
+        {t.nav.login}
+      </a>
+      <!-- Mobile CTA (shown when NOT logged in) -->
+      <a
+        id="mobile-cta"
+        href={`/${lang}/${lang === 'es' ? 'registro' : 'register'}`}
+        class="block w-full text-center rounded-lg bg-gradient-to-r from-primary to-secondary px-4 py-2.5 text-sm font-semibold text-white"
+      >
+        {t.nav.cta}
+      </a>
+      <!-- Mobile Dashboard (shown when logged in, hidden by default) -->
+      <a
+        id="mobile-dashboard"
+        href={`/${lang}/dashboard`}
+        class="hidden w-full text-center rounded-lg bg-gradient-to-r from-primary to-secondary px-4 py-2.5 text-sm font-semibold text-white"
+      >
+        Dashboard
+      </a>
+      <!-- Mobile Admin (shown when logged in as admin, hidden by default) -->
+      <a
+        id="mobile-admin"
+        href={`/${lang}/admin`}
+        class="hidden w-full text-center rounded-lg border border-yellow-500/50 px-4 py-2.5 text-sm font-semibold text-yellow-400"
+      >
+        Admin Panel
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Header scroll effect
+  const header = document.getElementById('header');
+  let lastScroll = 0;
+
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.scrollY;
+    if (currentScroll > 50) {
+      header?.classList.add('bg-bg/80', 'backdrop-blur-xl', 'border-b', 'border-border');
+    } else {
+      header?.classList.remove('bg-bg/80', 'backdrop-blur-xl', 'border-b', 'border-border');
+    }
+    lastScroll = currentScroll;
+  });
+
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  menuBtn?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+
+  // Close mobile menu on link click
+  mobileMenu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+    });
+  });
+
+  // Auth-aware header: swap CTA for Dashboard when logged in
+  (async () => {
+    try {
+      const { createClient } = await import('@supabase/supabase-js');
+      const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
+      const supabaseKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
+      if (!supabaseUrl || !supabaseKey) return;
+
+      const supabase = createClient(supabaseUrl, supabaseKey);
+      const { data: { session } } = await supabase.auth.getSession();
+
+      if (session) {
+        // Hide CTA + Login buttons, show Dashboard buttons
+        const headerCta = document.getElementById('header-cta');
+        const headerLogin = document.getElementById('header-login');
+        const headerDashboard = document.getElementById('header-dashboard');
+        const mobileCta = document.getElementById('mobile-cta');
+        const mobileLogin = document.getElementById('mobile-login');
+        const mobileDashboard = document.getElementById('mobile-dashboard');
+
+        if (headerCta) headerCta.classList.add('!hidden');
+        if (headerLogin) headerLogin.classList.add('!hidden');
+        if (headerDashboard) headerDashboard.classList.remove('hidden');
+        if (headerDashboard) headerDashboard.classList.add('sm:inline-flex');
+        if (mobileCta) mobileCta.classList.add('!hidden');
+        if (mobileLogin) mobileLogin.classList.add('!hidden');
+        if (mobileDashboard) mobileDashboard.classList.remove('hidden');
+        if (mobileDashboard) mobileDashboard.classList.add('block');
+
+        // Show Admin link only for admin email
+        if (session.user.email === 'jose301184@gmail.com') {
+          const headerAdmin = document.getElementById('header-admin');
+          const mobileAdmin = document.getElementById('mobile-admin');
+          if (headerAdmin) { headerAdmin.classList.remove('hidden'); headerAdmin.classList.add('sm:inline-flex'); }
+          if (mobileAdmin) { mobileAdmin.classList.remove('hidden'); mobileAdmin.classList.add('block'); }
+        }
+      }
+    } catch {
+      // Supabase not configured yet — ignore silently
+    }
+  })();
+</script>

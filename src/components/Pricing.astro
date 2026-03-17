@@ -1,0 +1,126 @@
+---
+import { type Locale, useTranslations } from '@i18n/utils';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="pricing" class="relative py-24 lg:py-32">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <!-- Overline & Title -->
+    <div class="text-center mb-16 reveal">
+      <span class="text-xs font-semibold uppercase tracking-widest text-primary">{t.pricing.overline}</span>
+      <h2 class="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
+        {t.pricing.title}
+      </h2>
+      <p class="mt-4 text-lg text-text-secondary max-w-2xl mx-auto">{t.pricing.subtitle}</p>
+    </div>
+
+    <!-- Pricing Cards -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {t.pricing.tiers.map((tier) => (
+        <div class={`reveal relative rounded-2xl border ${tier.popular ? 'border-primary/50 bg-gradient-to-b from-primary/5 to-bg-surface' : 'border-border bg-bg-surface'} p-6 lg:p-8 flex flex-col ${tier.popular ? 'lg:scale-105 lg:shadow-2xl lg:shadow-primary/10 z-10' : ''}`}>
+          {/* Popular badge */}
+          {tier.popular && (
+            <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
+              <span class="inline-flex items-center rounded-full bg-gradient-to-r from-primary to-secondary px-4 py-1 text-xs font-bold text-white shadow-lg">
+                {t.pricing.popular_badge}
+              </span>
+            </div>
+          )}
+
+          {/* Coming Soon badge */}
+          {tier.comingSoon && (
+            <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
+              <span class="inline-flex items-center rounded-full bg-warning/10 border border-warning/30 px-4 py-1 text-xs font-bold text-warning shadow-lg">
+                {lang === 'es' ? 'Próximamente' : 'Coming Soon'}
+              </span>
+            </div>
+          )}
+
+          {/* Launch Offer badge */}
+          {tier.badge && !tier.popular && !tier.comingSoon && (
+            <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
+              <span class="inline-flex items-center rounded-full bg-gradient-to-r from-warning to-danger px-4 py-1 text-xs font-bold text-white shadow-lg">
+                {tier.badge}
+              </span>
+            </div>
+          )}
+
+          {/* Tier name */}
+          <h3 class="text-lg font-bold mb-2">{tier.name}</h3>
+          <p class="text-sm text-text-muted mb-6">{tier.description}</p>
+
+          {/* Price */}
+          <div class="mb-6">
+            {tier.originalPrice && (
+              <div class="text-sm text-text-muted line-through mb-1">
+                {tier.originalPrice} <span class="text-xs">MXN</span>
+              </div>
+            )}
+            <div class="flex items-baseline gap-2">
+              <span class={`text-4xl font-extrabold font-mono ${tier.popular || tier.badge ? 'text-gradient' : ''}`}>
+                {tier.price}
+              </span>
+              {tier.price !== 'Gratis' && tier.price !== 'Free' && (
+                <span class="text-sm text-text-muted">MXN</span>
+              )}
+            </div>
+            {tier.price_usd && (
+              <div class="text-xs text-text-muted mt-1">{tier.price_usd}</div>
+            )}
+            <div class="text-sm text-text-secondary mt-1">{tier.period}</div>
+          </div>
+
+          {/* Features */}
+          <ul class="space-y-3 mb-8 flex-1">
+            {tier.features.map((feature) => (
+              <li class="flex items-start gap-3">
+                <svg class={`w-5 h-5 mt-0.5 flex-shrink-0 ${tier.popular ? 'text-primary' : 'text-success'}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                <span class="text-sm text-text-secondary">{feature}</span>
+              </li>
+            ))}
+          </ul>
+
+          {/* CTA */}
+          {tier.comingSoon ? (
+            <span class="block w-full text-center rounded-xl py-3 px-6 text-sm font-bold border border-border text-text-muted cursor-not-allowed opacity-50">
+              {lang === 'es' ? 'Pr\u00f3ximamente' : 'Coming Soon'}
+            </span>
+          ) : tier.plan_id ? (
+            <a
+              href={`/${lang}/${lang === 'es' ? 'registro' : 'register'}?plan=${tier.plan_id}`}
+              class={`block w-full text-center rounded-xl py-3 px-6 text-sm font-bold transition-all ${
+                tier.popular
+                  ? 'bg-gradient-to-r from-primary to-secondary text-white shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:scale-[1.02]'
+                  : 'border border-border text-text hover:border-primary/50 hover:text-primary'
+              }`}
+            >
+              {tier.cta}
+            </a>
+          ) : (
+            <a
+              href={`/${lang}/${lang === 'es' ? 'registro' : 'register'}`}
+              class={`block w-full text-center rounded-xl py-3 px-6 text-sm font-bold transition-all ${
+                tier.popular
+                  ? 'bg-gradient-to-r from-primary to-secondary text-white shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:scale-[1.02]'
+                  : 'border border-border text-text hover:border-primary/50 hover:text-primary'
+              }`}
+            >
+              {tier.cta}
+            </a>
+          )}
+        </div>
+      ))}
+    </div>
+
+    <!-- Currency note -->
+    <p class="text-center text-xs text-text-muted mt-8">{t.pricing.currency_note}</p>
+  </div>
+</section>

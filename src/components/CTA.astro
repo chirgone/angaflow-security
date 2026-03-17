@@ -1,0 +1,41 @@
+---
+import { type Locale, useTranslations } from '@i18n/utils';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="relative py-24 lg:py-32 overflow-hidden">
+  <!-- Background glow -->
+  <div class="absolute inset-0">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px]"></div>
+  </div>
+
+  <div class="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+    <div class="reveal">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-6">
+        {t.cta.title}
+      </h2>
+      <p class="text-lg text-text-secondary mb-10 max-w-xl mx-auto">
+        {t.cta.subtitle}
+      </p>
+
+      <a
+        href={`/${lang}/${lang === 'es' ? 'registro' : 'register'}`}
+        class="inline-flex items-center gap-3 rounded-2xl bg-gradient-to-r from-primary to-secondary px-10 py-5 text-lg font-bold text-white shadow-2xl shadow-primary/30 hover:shadow-primary/50 transition-all hover:scale-[1.03]"
+      >
+        {t.cta.button}
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14"/>
+          <path d="m12 5 7 7-7 7"/>
+        </svg>
+      </a>
+
+      <p class="mt-6 text-sm text-text-muted">{t.cta.trust}</p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,63 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+
+const lang = 'es' as const;
+---
+
+<Layout lang={lang}>
+  <Header lang={lang} />
+  <main class="py-24 lg:py-32">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-8">Aviso de Privacidad</h1>
+      <p class="text-sm text-text-muted mb-8">{'\u00DA'}ltima actualizaci{'\u00F3'}n: 8 de marzo de 2026</p>
+
+      <div class="prose prose-invert max-w-none space-y-6 text-text-secondary leading-relaxed">
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">1. Responsable del tratamiento</h2>
+        <p>ANGA Mexico (&quot;Anga Security&quot;), con domicilio en Ciudad de M{'\u00E9'}xico, M{'\u00E9'}xico, es responsable del tratamiento de sus datos personales. Correo de contacto: <a href="mailto:jose301184@gmail.com" class="text-primary hover:underline">jose301184@gmail.com</a>.</p>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">2. Datos que recopilamos</h2>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong>Datos de cuenta:</strong> correo electr{'\u00F3'}nico, contrase{'\u00F1'}a (hash), nombre (si se proporciona).</li>
+          <li><strong>Datos t{'\u00E9'}cnicos:</strong> nombre de dominio analizado, Zone ID de Cloudflare, tokens API (cifrados en tr{'\u00E1'}nsito, nunca almacenados).</li>
+          <li><strong>Datos de uso:</strong> reportes generados, cr{'\u00E9'}ditos consumidos, historial de transacciones.</li>
+          <li><strong>Datos de pago:</strong> procesados directamente por MercadoPago. No almacenamos n{'\u00FA'}meros de tarjeta.</li>
+        </ul>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">3. Finalidad del tratamiento</h2>
+        <p>Utilizamos sus datos para:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Proveer los servicios de auditor{'\u00ED'}a, simulaci{'\u00F3'}n y compliance de seguridad.</li>
+          <li>Generar y almacenar reportes de seguridad asociados a su cuenta.</li>
+          <li>Procesar pagos y administrar cr{'\u00E9'}ditos.</li>
+          <li>Enviar comunicaciones relacionadas con el servicio.</li>
+        </ul>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">4. Almacenamiento y seguridad</h2>
+        <p>Sus datos se almacenan en Supabase (infraestructura en la nube) con cifrado en reposo y en tr{'\u00E1'}nsito. Los tokens API de Cloudflare se transmiten de forma segura y <strong>no se almacenan</strong> despu{'\u00E9'}s de la ejecuci{'\u00F3'}n del an{'\u00E1'}lisis.</p>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">5. Transferencia de datos</h2>
+        <p>No vendemos ni compartimos sus datos personales con terceros, excepto:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong>MercadoPago:</strong> para procesamiento de pagos.</li>
+          <li><strong>Cloudflare API:</strong> para ejecutar los an{'\u00E1'}lisis de seguridad (usando sus propios tokens).</li>
+          <li><strong>Supabase:</strong> como proveedor de base de datos y autenticaci{'\u00F3'}n.</li>
+        </ul>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">6. Derechos ARCO (M{'\u00E9'}xico)</h2>
+        <p>Conforme a la LFPDPPP, usted tiene derecho a Acceder, Rectificar, Cancelar u Oponerse al tratamiento de sus datos personales. Para ejercer estos derechos, env{'\u00ED'}e un correo a <a href="mailto:jose301184@gmail.com" class="text-primary hover:underline">jose301184@gmail.com</a>.</p>
+
+        <h2 id="cookies" class="text-xl font-bold text-text mt-8 mb-4">7. Cookies</h2>
+        <p>Utilizamos cookies esenciales para autenticaci{'\u00F3'}n y sesi{'\u00F3'}n. No utilizamos cookies de rastreo publicitario.</p>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">8. Cambios a este aviso</h2>
+        <p>Nos reservamos el derecho de actualizar este aviso de privacidad. Cualquier cambio ser{'\u00E1'} publicado en esta p{'\u00E1'}gina.</p>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">9. Contacto</h2>
+        <p>Para cualquier consulta sobre privacidad: <a href="mailto:jose301184@gmail.com" class="text-primary hover:underline">jose301184@gmail.com</a></p>
+      </div>
+    </div>
+  </main>
+  <Footer lang={lang} />
+</Layout>

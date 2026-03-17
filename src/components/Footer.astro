@@ -1,0 +1,99 @@
+---
+import { type Locale, useTranslations, getLocalePath } from '@i18n/utils';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-border bg-bg-surface/50">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <!-- Brand -->
+      <div class="lg:col-span-1">
+        <div class="flex items-center gap-2 mb-4">
+          <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary">
+            <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <span class="text-lg font-bold">{t.footer.brand}</span>
+        </div>
+        <p class="text-sm text-text-secondary mb-4">{t.footer.tagline}</p>
+
+        <!-- Made in Mexico -->
+        <div class="flex items-center gap-2 text-xs text-text-muted">
+          <span class="text-base">🇲🇽</span>
+          {t.footer.powered}
+        </div>
+      </div>
+
+      <!-- Product Links -->
+      <div>
+        <h4 class="text-sm font-bold uppercase tracking-wider mb-4">{t.footer.links.product}</h4>
+        <ul class="space-y-3">
+          <li><a href="#features" class="text-sm text-text-secondary hover:text-primary transition-colors">{t.footer.links.features}</a></li>
+          <li><a href="#pricing" class="text-sm text-text-secondary hover:text-primary transition-colors">{t.footer.links.pricing}</a></li>
+          <li><a href="#consulting" class="text-sm text-text-secondary hover:text-primary transition-colors">{t.footer.links.consulting}</a></li>
+          <li><a href="#compliance" class="text-sm text-text-secondary hover:text-primary transition-colors">{t.footer.links.compliance}</a></li>
+        </ul>
+      </div>
+
+      <!-- Legal Links -->
+      <div>
+        <h4 class="text-sm font-bold uppercase tracking-wider mb-4">{t.footer.legal.title}</h4>
+        <ul class="space-y-3">
+          <li><a href={`/${lang}/${lang === 'es' ? 'privacidad' : 'privacy'}`} class="text-sm text-text-secondary hover:text-primary transition-colors">{t.footer.legal.privacy}</a></li>
+          <li><a href={`/${lang}/${lang === 'es' ? 'terminos' : 'terms'}`} class="text-sm text-text-secondary hover:text-primary transition-colors">{t.footer.legal.terms}</a></li>
+          <li><a href={`/${lang}/${lang === 'es' ? 'privacidad' : 'privacy'}#cookies`} class="text-sm text-text-secondary hover:text-primary transition-colors">{t.footer.legal.cookies}</a></li>
+          <li><a href={`/${lang}/${lang === 'es' ? 'reembolsos' : 'refunds'}`} class="text-sm text-text-secondary hover:text-primary transition-colors">{t.footer.legal.refunds}</a></li>
+          <li><a href={`/${lang}/${lang === 'es' ? 'cancelacion' : 'cancellation'}`} class="text-sm text-text-secondary hover:text-primary transition-colors">{t.footer.legal.cancellation}</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4 class="text-sm font-bold uppercase tracking-wider mb-4">{t.footer.contact.title}</h4>
+        <ul class="space-y-3">
+          <li>
+            <a href={`mailto:${t.footer.contact.email}`} class="text-sm text-text-secondary hover:text-primary transition-colors flex items-center gap-2">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2"/>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+              </svg>
+              {t.footer.contact.email}
+            </a>
+          </li>
+          <li>
+            <a href={`https://wa.me/525551575041?text=${encodeURIComponent(t.whatsapp.message)}`} target="_blank" rel="noopener noreferrer" class="text-sm text-text-secondary hover:text-success transition-colors flex items-center gap-2">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" fill-rule="evenodd"/>
+              </svg>
+              {t.footer.contact.whatsapp}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="mt-12 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-xs text-text-muted">&copy; {year} {t.footer.copyright}</p>
+      <div class="flex items-center gap-4">
+        <a href={getLocalePath('es')} class={`text-xs ${lang === 'es' ? 'text-primary font-semibold' : 'text-text-muted hover:text-text'} transition-colors`}>ES</a>
+        <span class="text-text-muted">|</span>
+        <a href={getLocalePath('en')} class={`text-xs ${lang === 'en' ? 'text-primary font-semibold' : 'text-text-muted hover:text-text'} transition-colors`}>EN</a>
+      </div>
+    </div>
+
+    <!-- Trademark disclaimer -->
+    <div class="mt-4 text-center">
+      <p class="text-xs text-text-muted">{t.footer.disclaimer}</p>
+    </div>
+  </div>
+</footer>

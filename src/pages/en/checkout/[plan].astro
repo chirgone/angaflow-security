@@ -1,0 +1,32 @@
+---
+import Layout from '@layouts/Layout.astro';
+
+export function getStaticPaths() {
+  return [
+    { params: { plan: 'starter' } },
+    { params: { plan: 'pro' } },
+    { params: { plan: 'business' } },
+    { params: { plan: 'enterprise' } },
+  ];
+}
+
+const { plan } = Astro.params;
+const lang = 'en' as const;
+---
+
+<Layout lang={lang}>
+  <div id="checkout-root" data-plan={plan}></div>
+</Layout>
+
+<script>
+  import { createElement } from 'react';
+  import { createRoot } from 'react-dom/client';
+  import CheckoutPage from '@components/CheckoutPage';
+
+  const root = document.getElementById('checkout-root');
+  const plan = root?.getAttribute('data-plan') || '';
+  
+  if (root) {
+    createRoot(root).render(createElement(CheckoutPage, { plan, lang: 'en' }));
+  }
+</script>

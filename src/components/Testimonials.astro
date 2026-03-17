@@ -1,0 +1,124 @@
+---
+import { type Locale } from '@i18n/utils';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+
+const testimonials = {
+  es: {
+    overline: 'Lo que dicen nuestros clientes',
+    title: 'Resultados reales en seguridad',
+    items: [
+      {
+        quote: 'Pasamos de score D a B+ en menos de 2 horas. El reporte identificó que teníamos el WAF en modo "Log Only" sin saberlo.',
+        name: 'Sofía R.',
+        role: 'CTO',
+        company: 'Fintech, CDMX',
+        initial: 'S',
+        color: '#06b6d4',
+      },
+      {
+        quote: 'Nunca habíamos auditado nuestra configuración de Cloudflare. Encontramos 3 vulnerabilidades críticas en headers de seguridad que no sabíamos que teníamos.',
+        name: 'Carlos M.',
+        role: 'DevOps Lead',
+        company: 'E-commerce, Monterrey',
+        initial: 'C',
+        color: '#8b5cf6',
+      },
+      {
+        quote: 'El análisis avanzado de vulnerabilidades nos ahorró una auditoría externa que costaba 5x más. El roadmap de 6 fases nos dio un plan claro para implementar.',
+        name: 'Andrea L.',
+        role: 'Security Manager',
+        company: 'SaaS B2B, Guadalajara',
+        initial: 'A',
+        color: '#22c55e',
+      },
+    ],
+  },
+  en: {
+    overline: 'What our customers say',
+    title: 'Real security results',
+    items: [
+      {
+        quote: 'We went from a D to B+ score in under 2 hours. The report identified that we had our WAF in "Log Only" mode without knowing it.',
+        name: 'Sofía R.',
+        role: 'CTO',
+        company: 'Fintech, Mexico City',
+        initial: 'S',
+        color: '#06b6d4',
+      },
+      {
+        quote: 'We had never audited our Cloudflare config before. Found 3 critical vulnerabilities in security headers we didn\'t know existed.',
+        name: 'Carlos M.',
+        role: 'DevOps Lead',
+        company: 'E-commerce, Monterrey',
+        initial: 'C',
+        color: '#8b5cf6',
+      },
+      {
+        quote: 'The advanced penetration testing saved us an external audit that would have cost 5x more. The 6-phase roadmap gave us a clear implementation plan.',
+        name: 'Andrea L.',
+        role: 'Security Manager',
+        company: 'B2B SaaS, Guadalajara',
+        initial: 'A',
+        color: '#22c55e',
+      },
+    ],
+  },
+};
+
+const t = testimonials[lang];
+---
+
+<section id="testimonials" class="relative py-24 lg:py-32">
+  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.02] to-transparent"></div>
+
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <!-- Overline & Title -->
+    <div class="text-center mb-16 reveal">
+      <span class="text-xs font-semibold uppercase tracking-widest text-primary">{t.overline}</span>
+      <h2 class="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
+        {t.title}
+      </h2>
+    </div>
+
+    <!-- Testimonials Grid -->
+    <div class="grid gap-8 md:grid-cols-3">
+      {t.items.map((item) => (
+        <div class="reveal card-gradient p-8 hover:bg-bg-surface-hover transition-colors group relative">
+          {/* Stars */}
+          <div class="flex gap-1 mb-4">
+            {[1, 2, 3, 4, 5].map(() => (
+              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+            ))}
+          </div>
+
+          {/* Quote */}
+          <blockquote class="text-text-secondary leading-relaxed mb-6 text-sm lg:text-base">
+            "{item.quote}"
+          </blockquote>
+
+          {/* Author */}
+          <div class="flex items-center gap-4">
+            {/* Avatar */}
+            <div 
+              class="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg"
+              style={`background: ${item.color};`}
+            >
+              {item.initial}
+            </div>
+            <div>
+              <p class="font-semibold text-text">{item.name}</p>
+              <p class="text-sm text-text-muted">{item.role}, {item.company}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

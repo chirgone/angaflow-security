@@ -1,0 +1,58 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+
+const lang = 'en' as const;
+---
+
+<Layout lang={lang}>
+  <Header lang={lang} />
+  <main class="py-24 lg:py-32">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-8">Refund &amp; Credit Policy</h1>
+      <p class="text-sm text-text-muted mb-8">Last updated: March 11, 2026</p>
+
+      <div class="prose prose-invert max-w-none space-y-6 text-text-secondary leading-relaxed">
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">1. Final purchases</h2>
+        <p>All purchases made on Anga Security are <strong>final</strong>. Refunds are not issued as cash, bank transfers, or any other monetary means.</p>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">2. Credit validity</h2>
+        <p>Credits purchased on Anga Security <strong>never expire</strong>. You can use them at any time to generate audit reports, attack simulations, compliance analyses, and consulting sessions.</p>
+        <div class="p-4 rounded-xl mt-4" style="background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.15);">
+          <p class="text-sm" style="color: #22c55e;"><strong>Your credits never expire.</strong> Use your credits whenever you need them, with no time pressure.</p>
+        </div>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">3. Refunds (credits only)</h2>
+        <p>If you purchased credits and have <strong>NOT used them</strong>, you may request a refund <strong>exclusively in the form of credits</strong> within the first <strong>7 calendar days</strong> of your purchase.</p>
+        <div class="p-4 rounded-xl mt-4" style="background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.15);">
+          <p class="text-sm" style="color: #fbbf24;"><strong>Important:</strong> Refunds are NOT issued as cash, bank transfers, or any other monetary means. They are only issued as credits in your Anga Security account.</p>
+        </div>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">4. Used credits</h2>
+        <p>Credits that have been consumed to generate reports (audits, simulations, compliance) are <strong>non-refundable</strong> under any circumstances, neither as cash nor as credits.</p>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">5. Defective reports</h2>
+        <p>If a report fails to generate correctly due to a technical failure on our platform:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong>Option A:</strong> Free report replacement (no credit cost).</li>
+          <li><strong>Option B:</strong> Refund of the credits used to your account.</li>
+        </ul>
+        <p>To request a replacement, you must notify us within 48 hours of the defective report generation.</p>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">6. How to request a refund</h2>
+        <p>Send your request to:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong>Email:</strong> <a href="mailto:seguridad@angaflow.com" class="text-primary hover:underline">seguridad@angaflow.com</a></li>
+          <li><strong>WhatsApp:</strong> <a href="https://wa.me/525551575041" class="text-primary hover:underline">+52 55 5157 5041</a></li>
+        </ul>
+        <p>Include your account email, purchase date, and reason for the request. Response time: 24-48 business hours.</p>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">7. Contact</h2>
+        <p>For any inquiries about refunds or credits: <a href="mailto:seguridad@angaflow.com" class="text-primary hover:underline">seguridad@angaflow.com</a></p>
+      </div>
+    </div>
+  </main>
+  <Footer lang={lang} />
+</Layout>

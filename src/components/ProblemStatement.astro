@@ -1,0 +1,41 @@
+---
+import { type Locale, useTranslations } from '@i18n/utils';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="relative py-24 lg:py-32 overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-danger/[0.02] to-transparent"></div>
+
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <!-- Overline & Title -->
+    <div class="text-center mb-16 reveal">
+      <span class="text-xs font-semibold uppercase tracking-widest text-danger">{t.problem.overline}</span>
+      <h2 class="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
+        {t.problem.title}
+      </h2>
+    </div>
+
+    <!-- Stats Grid -->
+    <div class="grid md:grid-cols-3 gap-6 lg:gap-8 mb-16">
+      {t.problem.items.map((item, i) => (
+        <div class="reveal card-gradient p-8 text-center">
+          <div class={`text-4xl sm:text-5xl font-extrabold font-mono mb-4 ${i === 0 ? 'text-danger' : i === 1 ? 'text-warning' : 'text-danger'}`}>
+            {item.stat}
+          </div>
+          <p class="text-text-secondary leading-relaxed">{item.text}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Closing statement -->
+    <div class="text-center reveal">
+      <p class="text-xl sm:text-2xl font-bold text-gradient">{t.problem.closing}</p>
+    </div>
+  </div>
+</section>

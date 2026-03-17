@@ -1,0 +1,92 @@
+---
+import { type Locale, useTranslations } from '@i18n/utils';
+import ManagedServicesButton from './ManagedServicesButton';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const phone = '525551575041';
+
+const iconPaths: Record<string, string> = {
+  'phone': 'M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z',
+  'settings': 'M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z',
+  'graduation-cap': 'M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z M22 10v6 M6 12.5V16c0 1 2.686 3 6 3s6-2 6-3v-3.5',
+  'users': 'M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2 M9 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8z M22 21v-2a4 4 0 0 0-3-3.87 M16 3.13a4 4 0 0 1 0 7.75',
+};
+---
+
+<section id="consulting" class="relative py-24 lg:py-32">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <!-- Overline & Title -->
+    <div class="text-center mb-16 reveal">
+      <span class="text-xs font-semibold uppercase tracking-widest text-accent">{t.consulting.overline}</span>
+      <h2 class="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
+        {t.consulting.title}
+      </h2>
+      <p class="mt-4 text-lg text-text-secondary max-w-2xl mx-auto">{t.consulting.subtitle}</p>
+    </div>
+
+    <!-- Consulting Packages -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+      {t.consulting.packages.map((pkg) => (
+        <div class="reveal card-gradient p-8 flex flex-col hover:bg-bg-surface-hover transition-colors group">
+          {/* Icon */}
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-accent/10 border border-accent/20 mb-6">
+            <svg class="w-6 h-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              {iconPaths[pkg.icon]?.split(' M').map((segment, j) => (
+                <path d={j === 0 ? segment : `M${segment}`}/>
+              ))}
+            </svg>
+          </div>
+
+          <h3 class="text-lg font-bold mb-1 group-hover:text-accent transition-colors">{pkg.name}</h3>
+          <div class="text-xs text-text-muted mb-4">{pkg.duration}</div>
+          <p class="text-sm text-text-secondary mb-6 flex-1">{pkg.description}</p>
+
+          {/* Price or Contact Label */}
+          {!pkg.contact_only && (
+            <div class="mb-4">
+              <span class="text-2xl font-extrabold font-mono">{pkg.price}</span>
+              <span class="text-xs text-text-muted ml-1">MXN</span>
+              <div class="text-xs text-text-muted">{pkg.price_usd}</div>
+            </div>
+          )}
+          {pkg.contact_only && (
+            <div class="mb-4 text-center">
+              <span class="text-lg font-semibold text-accent">{lang === 'es' ? 'Plan personalizado' : 'Custom plan'}</span>
+            </div>
+          )}
+
+          {/* CTA Button */}
+          {!pkg.contact_only && (
+            <a
+              href={`https://wa.me/${phone}?text=${encodeURIComponent(lang === 'es' ? `Hola! Me interesa agendar una sesi\u00f3n de consultor\u00eda: ${pkg.name} (${pkg.duration})` : `Hi! I'm interested in scheduling a consulting session: ${pkg.name} (${pkg.duration})`)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center justify-center gap-2 w-full text-center rounded-xl border border-border py-2.5 px-4 text-sm font-bold text-text hover:border-accent/50 hover:text-accent transition-all"
+            >
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.118.553 4.107 1.519 5.834L.054 23.498a.5.5 0 0 0 .607.607l5.664-1.465A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-1.993 0-3.873-.557-5.473-1.527l-.393-.234-3.356.868.88-3.356-.234-.393A9.72 9.72 0 0 1 2.25 12c0-5.376 4.374-9.75 9.75-9.75S21.75 6.624 21.75 12s-4.374 9.75-9.75 9.75z"/></svg>
+              {lang === 'es' ? 'Agendar por WhatsApp' : 'Schedule via WhatsApp'}
+            </a>
+          )}
+          {pkg.contact_only && (
+            <div class="w-full">
+              <ManagedServicesButton 
+                lang={lang} 
+                ctaText={lang === 'es' ? 'Contáctanos' : 'Contact us'} 
+                client:load 
+              />
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+
+    <!-- Note -->
+    <p class="text-center text-sm text-text-muted mt-8 reveal">{t.consulting.note}</p>
+  </div>
+</section>

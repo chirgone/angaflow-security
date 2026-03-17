@@ -1,0 +1,39 @@
+---
+import { type Locale, useTranslations } from '@i18n/utils';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="faq" class="relative py-24 lg:py-32">
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+    <!-- Overline & Title -->
+    <div class="text-center mb-16 reveal">
+      <span class="text-xs font-semibold uppercase tracking-widest text-primary">{t.faq.overline}</span>
+      <h2 class="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
+        {t.faq.title}
+      </h2>
+    </div>
+
+    <!-- Accordion -->
+    <div class="space-y-4 reveal">
+      {t.faq.items.map((item, i) => (
+        <details class="group rounded-xl border border-border bg-bg-surface overflow-hidden" open={i === 0}>
+          <summary class="flex items-center justify-between cursor-pointer px-6 py-5 text-left font-semibold hover:bg-bg-surface-hover transition-colors">
+            <span class="pr-4">{item.question}</span>
+            <svg class="w-5 h-5 flex-shrink-0 text-text-muted transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m6 9 6 6 6-6"/>
+            </svg>
+          </summary>
+          <div class="px-6 pb-5 text-sm text-text-secondary leading-relaxed border-t border-border pt-4">
+            {item.answer}
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

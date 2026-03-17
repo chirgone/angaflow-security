@@ -1,0 +1,172 @@
+---
+import { type Locale, useTranslations } from '@i18n/utils';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="relative min-h-screen flex items-center pt-20 lg:pt-0 overflow-hidden">
+  <!-- Background effects -->
+  <div class="absolute inset-0 bg-grid"></div>
+  <div class="absolute top-1/4 -left-32 w-96 h-96 bg-primary/10 rounded-full blur-[120px]"></div>
+  <div class="absolute bottom-1/4 -right-32 w-96 h-96 bg-secondary/10 rounded-full blur-[120px]"></div>
+
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <!-- Left: Copy -->
+      <div class="max-w-2xl">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-4 py-1.5 mb-8">
+          <div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+          <span class="text-xs font-medium text-primary">{t.hero.badge}</span>
+        </div>
+
+        <!-- Headline -->
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
+          {t.hero.title_1}
+          <br/>
+          <span class="text-gradient">{t.hero.title_highlight}</span>
+          <br/>
+          <span class="text-text-secondary">{t.hero.title_2}</span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="mt-6 text-lg text-text-secondary leading-relaxed max-w-xl">
+          {t.hero.subtitle}
+        </p>
+
+        <!-- CTAs -->
+        <div class="mt-8 flex flex-col sm:flex-row gap-4">
+          <a
+            href={`/${lang}/${lang === 'es' ? 'registro' : 'register'}?plan=starter`}
+            class="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary to-secondary px-8 py-4 text-base font-bold text-white shadow-xl shadow-primary/25 hover:shadow-primary/40 transition-all hover:scale-[1.02]"
+          >
+            {t.hero.cta_primary}
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"/>
+              <path d="m12 5 7 7-7 7"/>
+            </svg>
+          </a>
+          <a
+            href="#how-it-works"
+            class="inline-flex items-center justify-center gap-2 rounded-xl border border-border px-8 py-4 text-base font-semibold text-text-secondary hover:text-text hover:border-primary/50 transition-all"
+          >
+            {t.hero.cta_secondary}
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="6 3 20 12 6 21 6 3"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Stats -->
+        <div class="mt-12 grid grid-cols-3 gap-6 border-t border-border pt-8">
+          <div>
+            <div class="text-2xl sm:text-3xl font-bold font-mono text-gradient">38+</div>
+            <div class="text-xs sm:text-sm text-text-muted mt-1">{t.hero.stat_checks}</div>
+          </div>
+          <div>
+            <div class="text-2xl sm:text-3xl font-bold font-mono text-gradient">75+</div>
+            <div class="text-xs sm:text-sm text-text-muted mt-1">{t.hero.stat_attacks}</div>
+          </div>
+          <div>
+            <div class="text-2xl sm:text-3xl font-bold font-mono text-gradient">{t.hero.stat_time_value}</div>
+            <div class="text-xs sm:text-sm text-text-muted mt-1">{t.hero.stat_time}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Animated Score Gauge -->
+      <div class="relative flex items-center justify-center animate-float">
+        <div class="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
+          <!-- Outer glow ring -->
+          <div class="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 blur-xl animate-pulse-ring"></div>
+
+          <!-- Score circle -->
+          <div class="relative w-full h-full rounded-full border border-border bg-bg-surface flex items-center justify-center glow">
+            <!-- SVG Gauge -->
+            <svg class="absolute inset-4" viewBox="0 0 200 200">
+              <!-- Background arc -->
+              <circle
+                cx="100" cy="100" r="85"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="6"
+                class="text-border"
+                stroke-dasharray="534.07"
+                stroke-dashoffset="133.52"
+                stroke-linecap="round"
+                transform="rotate(135, 100, 100)"
+              />
+              <!-- Score arc (animated) -->
+              <circle
+                cx="100" cy="100" r="85"
+                fill="none"
+                stroke="url(#gaugeGradient)"
+                stroke-width="6"
+                stroke-dasharray="534.07"
+                stroke-dashoffset="534.07"
+                stroke-linecap="round"
+                transform="rotate(135, 100, 100)"
+                class="gauge-fill"
+              />
+              <defs>
+                <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#06b6d4"/>
+                  <stop offset="100%" stop-color="#3b82f6"/>
+                </linearGradient>
+              </defs>
+            </svg>
+
+            <!-- Score display -->
+            <div class="text-center z-10">
+              <div class="text-6xl sm:text-7xl font-extrabold font-mono text-gradient score-number">87</div>
+              <div class="text-xl sm:text-2xl font-bold text-primary mt-1">/ 100</div>
+              <div class="mt-2 inline-flex items-center gap-1.5 rounded-full bg-success/10 border border-success/30 px-3 py-1">
+                <div class="w-2 h-2 rounded-full bg-success"></div>
+                <span class="text-xs font-semibold text-success">Grade B+</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating category labels -->
+          <div class="absolute -top-2 left-1/2 -translate-x-1/2 rounded-lg border border-border bg-bg-surface px-3 py-1.5 text-xs font-medium text-primary shadow-lg">
+            SSL/TLS: 95
+          </div>
+          <div class="absolute top-1/4 -right-4 sm:-right-8 rounded-lg border border-border bg-bg-surface px-3 py-1.5 text-xs font-medium text-secondary shadow-lg">
+            WAF: 82
+          </div>
+          <div class="absolute bottom-1/4 -right-4 sm:-right-8 rounded-lg border border-border bg-bg-surface px-3 py-1.5 text-xs font-medium text-warning shadow-lg">
+            DDoS: 68
+          </div>
+          <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded-lg border border-border bg-bg-surface px-3 py-1.5 text-xs font-medium text-success shadow-lg">
+            DNS: 91
+          </div>
+          <div class="absolute top-1/4 -left-4 sm:-left-8 rounded-lg border border-border bg-bg-surface px-3 py-1.5 text-xs font-medium text-accent shadow-lg">
+            Bot: 78
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .gauge-fill {
+    animation: gauge-animate 2s ease-out 0.5s forwards;
+  }
+
+  @keyframes gauge-animate {
+    to {
+      /* 87% of 400.55 (270deg arc) = ~186 offset remaining */
+      stroke-dashoffset: 186;
+    }
+  }
+
+  .score-number {
+    animation: score-count 2s ease-out 0.5s forwards;
+  }
+</style>

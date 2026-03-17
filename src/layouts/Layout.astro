@@ -1,0 +1,160 @@
+---
+import { type Locale, useTranslations } from '@i18n/utils';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<!doctype html>
+<html lang={lang} class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={t.meta.description} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- OG Meta -->
+    <meta property="og:title" content={t.meta.title} />
+    <meta property="og:description" content={t.meta.description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={`https://www.angaflow.com/${lang}/`} />
+    <meta property="og:image" content="https://www.angaflow.com/images/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Alternate languages -->
+    <link rel="alternate" hreflang="es" href="https://www.angaflow.com/es/" />
+    <link rel="alternate" hreflang="en" href="https://www.angaflow.com/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.angaflow.com/es/" />
+
+    <!-- Google Analytics 4 with Consent Mode v2 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T1RRZ8V36B"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      // Consent Mode v2: deny by default until user accepts
+      gtag('consent', 'default', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied'
+      });
+      gtag('js', new Date());
+      gtag('config', 'G-T1RRZ8V36B');
+    </script>
+
+    <title>{t.meta.title}</title>
+  </head>
+  <body class="bg-bg text-text font-sans antialiased">
+    <slot />
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:9999; padding:16px; background:#111827; border-top:1px solid #1e293b; box-shadow:0 -4px 20px rgba(0,0,0,0.3);">
+      <div style="max-width:1024px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px;">
+        <p style="color:#94a3b8; font-size:13px; flex:1; min-width:200px; line-height:1.5;">
+          {lang === 'es'
+            ? 'Utilizamos cookies esenciales para el funcionamiento del sitio y cookies de analítica para mejorar tu experiencia. Al continuar navegando, aceptas nuestro uso de cookies.'
+            : 'We use essential cookies for site functionality and analytics cookies to improve your experience. By continuing to browse, you accept our use of cookies.'}
+          <a href={`/${lang}/${lang === 'es' ? 'privacidad' : 'privacy'}#cookies`} style="color:#06b6d4; text-decoration:underline; margin-left:4px;">
+            {lang === 'es' ? 'Más información' : 'Learn more'}
+          </a>
+        </p>
+        <div style="display:flex; gap:8px; flex-shrink:0;">
+          <button id="cookie-reject" style="padding:8px 16px; border-radius:8px; font-size:13px; font-weight:500; color:#94a3b8; background:transparent; border:1px solid #334155; cursor:pointer;">
+            {lang === 'es' ? 'Solo esenciales' : 'Essential only'}
+          </button>
+          <button id="cookie-accept" style="padding:8px 16px; border-radius:8px; font-size:13px; font-weight:600; color:#fff; background:linear-gradient(135deg,#06b6d4,#3b82f6); border:none; cursor:pointer;">
+            {lang === 'es' ? 'Aceptar todo' : 'Accept all'}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll reveal script -->
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+      );
+
+      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+
+    <!-- Cookie consent logic -->
+    <script>
+      (function() {
+        const COOKIE_KEY = 'anga_cookie_consent';
+        const consent = localStorage.getItem(COOKIE_KEY);
+        const banner = document.getElementById('cookie-banner');
+
+        if (!consent && banner) {
+          banner.style.display = 'block';
+        }
+
+        document.getElementById('cookie-accept')?.addEventListener('click', () => {
+          localStorage.setItem(COOKIE_KEY, 'all');
+          if (banner) banner.style.display = 'none';
+          // Enable analytics and ads tracking
+          if (typeof gtag === 'function') {
+            gtag('consent', 'update', {
+              analytics_storage: 'granted',
+              ad_storage: 'granted',
+              ad_user_data: 'granted',
+              ad_personalization: 'granted'
+            });
+          }
+        });
+
+        document.getElementById('cookie-reject')?.addEventListener('click', () => {
+          localStorage.setItem(COOKIE_KEY, 'essential');
+          if (banner) banner.style.display = 'none';
+          // Keep analytics disabled
+        });
+      })();
+    </script>
+
+    <!-- Session expired notification -->
+    <script>
+      (function() {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('expired') === '1') {
+          const lang = window.location.pathname.startsWith('/en') ? 'en' : 'es';
+          const msg = lang === 'es'
+            ? 'Tu sesion ha expirado por inactividad. Inicia sesion nuevamente.'
+            : 'Your session has expired due to inactivity. Please sign in again.';
+          // Show a brief notification
+          const toast = document.createElement('div');
+          toast.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:9999;padding:12px 24px;border-radius:12px;font-size:14px;color:#fbbf24;background:#1e1b0f;border:1px solid rgba(251,191,36,0.2);box-shadow:0 4px 20px rgba(0,0,0,0.3);';
+          toast.textContent = msg;
+          document.body.appendChild(toast);
+          setTimeout(() => toast.remove(), 6000);
+          // Clean URL
+          window.history.replaceState({}, '', window.location.pathname);
+        }
+      })();
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>

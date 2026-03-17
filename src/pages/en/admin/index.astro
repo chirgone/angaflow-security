@@ -1,0 +1,18 @@
+---
+import Layout from '@layouts/Layout.astro';
+
+const lang = 'en' as const;
+---
+
+<Layout lang={lang}>
+  <div id="admin-root"></div>
+</Layout>
+
+<script>
+  import { createElement } from 'react';
+  import { createRoot } from 'react-dom/client';
+  import AdminDashboard from '@components/AdminDashboard';
+
+  const root = createRoot(document.getElementById('admin-root')!);
+  root.render(createElement(AdminDashboard, { lang: 'en' }));
+</script>

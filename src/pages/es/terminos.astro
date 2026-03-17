@@ -1,0 +1,109 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+
+const lang = 'es' as const;
+---
+
+<Layout lang={lang}>
+  <Header lang={lang} />
+  <main class="py-24 lg:py-32">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-8">T{'\u00E9'}rminos de Servicio</h1>
+      <p class="text-sm text-text-muted mb-8">{'\u00DA'}ltima actualizaci{'\u00F3'}n: 8 de marzo de 2026</p>
+
+      <div class="prose prose-invert max-w-none space-y-6 text-text-secondary leading-relaxed">
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">1. Aceptaci{'\u00F3'}n de los t{'\u00E9'}rminos</h2>
+        <p>Al utilizar los servicios de Anga Security (el &quot;Servicio&quot;), usted acepta estos T{'\u00E9'}rminos de Servicio. Si no est{'\u00E1'} de acuerdo, no utilice el Servicio.</p>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">2. Descripci{'\u00F3'}n del servicio</h2>
+        <p>Anga Security es una plataforma de auditor{'\u00ED'}a de seguridad para sitios web protegidos por Cloudflare. Ofrecemos:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>An{'\u00E1'}lisis automatizado de configuraciones de seguridad (Quick Scan, Security Audit).</li>
+          <li>Simulaci{'\u00F3'}n de ataques controlados contra protecciones de Cloudflare.</li>
+          <li>Evaluaci{'\u00F3'}n de cumplimiento regulatorio (compliance).</li>
+          <li>Consultor{'\u00ED'}a remota de seguridad.</li>
+        </ul>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">3. Cuenta de usuario</h2>
+        <p>Usted es responsable de mantener la confidencialidad de sus credenciales de acceso. Notif{'\u00ED'}quenos inmediatamente si sospecha uso no autorizado de su cuenta.</p>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">4. Cr{'\u00E9'}ditos y pagos</h2>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Los cr{'\u00E9'}ditos se adquieren mediante pago a trav{'\u00E9'}s de MercadoPago.</li>
+          <li>Los cr{'\u00E9'}ditos no expiran y no son transferibles.</li>
+          <li>Los cr{'\u00E9'}ditos no son reembolsables una vez utilizados.</li>
+          <li>Los precios est{'\u00E1'}n en pesos mexicanos (MXN) salvo que se indique lo contrario.</li>
+        </ul>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">5. Uso aceptable</h2>
+        <p>Usted se compromete a:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Utilizar el Servicio {'\u00FA'}nicamente para analizar dominios de su propiedad o para los cuales tenga autorizaci{'\u00F3'}n expl{'\u00ED'}cita.</li>
+          <li>No proporcionar tokens API de Cloudflare que no le pertenezcan.</li>
+          <li>No intentar evadir los l{'\u00ED'}mites del Servicio.</li>
+          <li>No utilizar el Servicio para actividades ilegales.</li>
+        </ul>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">6. Naturaleza de los reportes</h2>
+        <p>Los reportes generados por Anga Security son de car{'\u00E1'}cter <strong>consultivo</strong>. No constituyen una auditor{'\u00ED'}a formal de seguridad ni una certificaci{'\u00F3'}n de cumplimiento. Los resultados deben ser validados por profesionales certificados antes de reclamar cumplimiento regulatorio.</p>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">7. Simulaci{'\u00F3'}n de ataques</h2>
+        <p>Las simulaciones de ataque se ejecutan exclusivamente contra las capas de protecci{'\u00F3'}n de Cloudflare (WAF, Bot Management, DDoS Protection). No atacan servidores de origen. Al solicitar una simulaci{'\u00F3'}n, usted confirma que tiene autorizaci{'\u00F3'}n para realizar pruebas de seguridad en el dominio indicado.</p>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">8. Limitaci{'\u00F3'}n de responsabilidad</h2>
+        <p>Anga Security no ser{'\u00E1'} responsable por:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Da{'\u00F1'}os derivados de decisiones tomadas con base en los reportes.</li>
+          <li>Interrupciones del servicio causadas por terceros (Cloudflare, Supabase, MercadoPago).</li>
+          <li>Brechas de seguridad en los sitios analizados.</li>
+        </ul>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">9. Propiedad intelectual</h2>
+        <p>Los reportes generados son propiedad del usuario que los solicit{'\u00F3'}. La plataforma, c{'\u00F3'}digo fuente, algoritmos y marca Anga Security son propiedad de ANGA Mexico.</p>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">10. Modificaciones</h2>
+        <p>Nos reservamos el derecho de modificar estos t{'\u00E9'}rminos en cualquier momento. Los cambios se publicar{'\u00E1'}n en esta p{'\u00E1'}gina y entrar{'\u00E1'}n en vigor inmediatamente.</p>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">11. Ley aplicable</h2>
+        <p>Estos t{'\u00E9'}rminos se rigen por las leyes de M{'\u00E9'}xico. Cualquier controversia ser{'\u00E1'} resuelta en los tribunales competentes de la Ciudad de M{'\u00E9'}xico.</p>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">12. No afiliaci{'\u00F3'}n con Cloudflare</h2>
+        <p>Anga Security es un servicio independiente y <strong>no est{'\u00E1'} afiliado, patrocinado, respaldado ni certificado por Cloudflare, Inc.</strong> Cloudflare{'\u00AE'} es una marca registrada de Cloudflare, Inc. El uso de esta marca es {'\u00FA'}nicamente con fines descriptivos para indicar compatibilidad de nuestros servicios. No somos revendedores autorizados de Cloudflare ni tenemos una relaci{'\u00F3'}n comercial con Cloudflare, Inc.</p>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">13. Consentimiento de simulaci{'\u00F3'}n</h2>
+        <p>Al utilizar el servicio de Simulaci{'\u00F3'}n de Ataques (Attack Simulation), usted <strong>reconoce y acepta expl{'\u00ED'}citamente</strong> que:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Autoriza a Anga Security a ejecutar payloads de prueba (incluyendo SQLi, XSS, path traversal y otros vectores de ataque) contra su dominio.</li>
+          <li>Estas pruebas son realizadas a trav{'\u00E9'}s de la red de Cloudflare{'\u00AE'} y {'\u00FA'}nicamente eval{'\u00FA'}an las protecciones de Cloudflare, no sus servidores de origen.</li>
+          <li>Usted es el {'\u00FA'}nico responsable de garantizar que tiene permiso legal para realizar estas pruebas en el dominio especificado.</li>
+          <li>Libera a Anga Security de cualquier responsabilidad derivada del uso de payloads de simulaci{'\u00F3'}n contra dominios para los cuales no tenga autorizaci{'\u00F3'}n.</li>
+        </ul>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">14. Descargo de garant{'\u00ED'}as (&quot;AS-IS&quot;)</h2>
+        <p>El Servicio se proporciona <strong>&quot;TAL CUAL&quot; y &quot;SEG{'\u00DA'}N DISPONIBILIDAD&quot;</strong>, sin garant{'\u00ED'}as de ning{'\u00FA'}n tipo, expresas o impl{'\u00ED'}citas, incluyendo pero no limit{'\u00E1'}ndose a garant{'\u00ED'}as de comerciabilidad, idoneidad para un prop{'\u00F3'}sito particular, precisi{'\u00F3'}n, exhaustividad o no infracci{'\u00F3'}n. Anga Security no garantiza que:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Los reportes est{'\u00E9'}n libres de errores o sean completos.</li>
+          <li>El Servicio estar{'\u00E1'} disponible de forma ininterrumpida.</li>
+          <li>Las recomendaciones de seguridad sean suficientes para prevenir todas las amenazas.</li>
+          <li>Los resultados de simulaci{'\u00F3'}n reflejen con exactitud el comportamiento en producci{'\u00F3'}n.</li>
+        </ul>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">15. Indemnizaci{'\u00F3'}n</h2>
+        <p>Usted acepta <strong>indemnizar, defender y exonerar</strong> a Anga Security, sus directores, empleados, contratistas y afiliados de y contra cualquier reclamo, demanda, da{'\u00F1'}o, p{'\u00E9'}rdida, costo, responsabilidad o gasto (incluyendo honorarios legales razonables) que surjan de:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Su uso del Servicio en violaci{'\u00F3'}n de estos T{'\u00E9'}rminos.</li>
+          <li>Simulaciones de ataque realizadas contra dominios sin autorizaci{'\u00F3'}n.</li>
+          <li>Uso de API Tokens de Cloudflare{'\u00AE'} sin permiso del propietario de la cuenta.</li>
+          <li>Decisiones de seguridad tomadas con base en los reportes de Anga Security.</li>
+          <li>Violaci{'\u00F3'}n de cualquier ley aplicable o derechos de terceros.</li>
+        </ul>
+
+        <h2 class="text-xl font-bold text-text mt-8 mb-4">16. Contacto</h2>
+        <p>Para consultas sobre estos t{'\u00E9'}rminos: <a href="mailto:jose301184@gmail.com" class="text-primary hover:underline">jose301184@gmail.com</a></p>
+      </div>
+    </div>
+  </main>
+  <Footer lang={lang} />
+</Layout>

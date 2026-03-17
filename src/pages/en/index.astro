@@ -1,0 +1,40 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Header from '@components/Header.astro';
+import Hero from '@components/Hero.astro';
+import ProblemStatement from '@components/ProblemStatement.astro';
+import HowItWorks from '@components/HowItWorks.astro';
+import Features from '@components/Features.astro';
+import Testimonials from '@components/Testimonials.astro';
+import Pricing from '@components/Pricing.astro';
+import Subscriptions from '@components/Subscriptions.astro';
+import ManagedServices from '@components/ManagedServices.astro';
+import Consulting from '@components/Consulting.astro';
+import Compliance from '@components/Compliance.astro';
+import FAQ from '@components/FAQ.astro';
+import CTA from '@components/CTA.astro';
+import Footer from '@components/Footer.astro';
+import WhatsAppButton from '@components/WhatsAppButton.astro';
+
+const lang = 'en' as const;
+---
+
+<Layout lang={lang}>
+  <Header lang={lang} />
+  <main>
+    <Hero lang={lang} />
+    <ProblemStatement lang={lang} />
+    <HowItWorks lang={lang} />
+    <Features lang={lang} />
+    <Testimonials lang={lang} />
+    <Pricing lang={lang} />
+    <Subscriptions lang={lang} />
+    <ManagedServices lang={lang} />
+    <Consulting lang={lang} />
+    <Compliance lang={lang} />
+    <FAQ lang={lang} />
+    <CTA lang={lang} />
+  </main>
+  <Footer lang={lang} />
+  <WhatsAppButton lang={lang} />
+</Layout>

@@ -1,0 +1,392 @@
+{
+  "meta": {
+    "title": "Anga Security \u2014 Web Security Analysis & Vulnerability Testing",
+    "description": "Analyze, simulate attacks, and fix your web security configuration. Professional reports from $89 USD. Remote consulting included."
+  },
+  "nav": {
+    "features": "Features",
+    "pricing": "Pricing",
+    "consulting": "Consulting",
+    "faq": "FAQ",
+    "cta": "Free Scan",
+    "login": "Log In",
+    "managed": "Services"
+  },
+"hero": {
+    "badge": "Security Platform for Cloudflare®",
+    "title_1": "Does your Cloudflare® configuration",
+    "title_highlight": "follow best practices?",
+    "title_2": "Find out in 60 seconds.",
+    "subtitle": "We analyze 38 security controls, simulate 75+ real attacks, and help you fix identified vulnerabilities. Fully automated. All in one report.",
+    "cta_primary": "Get Offer - $749 MXN",
+    "cta_secondary": "See how it works",
+    "stat_checks": "Security checks",
+    "stat_attacks": "Simulated attacks",
+    "stat_time": "Analysis time",
+    "stat_time_value": "< 60s"
+  },
+  "problem": {
+    "overline": "The problem",
+    "title": "Most websites are misconfigured",
+    "items": [
+      {
+        "stat": "7 in 10",
+        "text": "websites have suboptimal security configurations according to web security studies"
+      },
+      {
+        "stat": "204 days",
+        "text": "is the average time to detect a security breach in Latin America according to IBM's Cost of a Data Breach Report 2024"
+      },
+      {
+        "stat": "$3.2M USD",
+        "text": "is the average cost of a data breach in the LATAM region according to IBM's Cost of a Data Breach Report 2024"
+      }
+    ],
+    "closing": "Get professional-grade security analysis without a full team."
+  },
+  "howItWorks": {
+    "overline": "How it works",
+    "title": "3 steps. 60 seconds. Professional results.",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Enter your domain",
+        "description": "Just your Cloudflare® domain name. No installations. No complex configurations."
+      },
+      {
+        "number": "02",
+        "title": "We analyze your security",
+        "description": "We run 38 checks across 8 categories: SSL/TLS, WAF, Bots, DDoS, API, DNS, Access, and Performance."
+      },
+      {
+        "number": "03",
+        "title": "Get your report",
+        "description": "Receive an A-F score, actionable recommendations, professional PDF, and a free AI-powered walkthrough."
+      }
+    ]
+  },
+  "features": {
+    "overline": "The complete platform",
+    "title": "The complete platform to audit your security",
+    "items": [
+      {
+        "icon": "shield-check",
+        "title": "Security Advisor",
+        "description": "38 security checks across 8 categories with A-F scoring and prioritized recommendations."
+      },
+      {
+        "icon": "swords",
+        "title": "Attack Simulator",
+        "description": "75+ real attacks: XSS, SQLi, DDoS, bots, malware and more. Test your defenses before a hacker does."
+      },
+      {
+        "icon": "wrench",
+        "title": "Professional Services",
+        "description": "From quick calls to full Cloudflare® management. Experts available to optimize your configuration."
+      },
+      {
+        "icon": "badge-check",
+        "title": "Trust Badge",
+        "description": "Verified security seal for your website. Show visitors your security is professional.",
+        "comingSoon": true
+      },
+      {
+        "icon": "bar-chart-3",
+        "title": "Benchmarks",
+        "description": "Compare your score against industry and regional averages. Know where you stand.",
+        "comingSoon": true
+      },
+      {
+        "icon": "headset",
+        "title": "Remote Consulting",
+        "description": "Security experts + AI guide you via video call. We solve it together, in real time."
+      }
+    ]
+  },
+  "pricing": {
+    "overline": "Transparent pricing",
+    "title": "Pay per report. No mandatory subscriptions.",
+    "subtitle": "One payment per analysis. No recurring charges. Tax added if invoice required.",
+    "currency_note": "Prices in MXN. We accept international Visa/MC/Amex cards. USD amounts are approximate.",
+    "tiers": [
+      {
+        "name": "Quick Scan",
+        "price": "Free",
+        "price_usd": "",
+        "period": "1 scan/month",
+        "description": "Quick diagnostic to know your security level.",
+        "popular": false,
+        "features": [
+          "Overall A-F score",
+          "Top 3 recommendations",
+          "1 scan per month",
+          "Free account required"
+        ],
+        "cta": "Create Free Account"
+      },
+      {
+        "name": "Starter",
+        "plan_id": "starter",
+        "price": "$749",
+        "originalPrice": "$1,499",
+        "price_usd": "~$44 USD",
+        "period": "one-time package",
+        "description": "Complete audit of your Cloudflare® configuration.",
+        "popular": false,
+        "badge": "Launch Offer",
+        "features": [
+          "1,500 credits",
+          "38 security checks",
+          "8 analysis categories",
+          "Professional PDF report",
+          "Prioritized recommendations",
+          "Email support"
+        ],
+        "cta": "Get Offer"
+      },
+      {
+        "name": "Pro",
+        "plan_id": "pro",
+        "price": "$3,299",
+        "price_usd": "~$197 USD",
+        "period": "one-time package",
+        "description": "Everything you need for complete audit + simulation.",
+        "popular": true,
+        "features": [
+          "4,500 credits",
+          "Everything in Starter",
+          "Pro audit + extras",
+          "38 security controls",
+          "Implementation roadmap",
+          "Priority support"
+        ],
+        "cta": "Buy Pro"
+      },
+      {
+        "name": "Business",
+        "plan_id": "business",
+        "price": "$5,999",
+        "price_usd": "~$359 USD",
+        "period": "one-time package",
+        "description": "Complete audit + simulation + compliance.",
+        "popular": false,
+        "features": [
+          "9,000 credits",
+          "Everything in Pro",
+          "Complete assessment",
+          "Attack simulation",
+          "Compliance frameworks",
+          "Video call support"
+        ],
+        "cta": "Buy Business"
+      },
+      {
+        "name": "Enterprise",
+        "plan_id": "enterprise",
+        "price": "$9,999",
+        "price_usd": "~$599 USD",
+        "period": "one-time package",
+        "description": "Complete coverage with ALL our reports.",
+        "popular": false,
+        "features": [
+          "16,000 credits",
+          "Everything in Business",
+          "ALL main reports",
+          "Unlimited compliance",
+          "Quick Call 30 minutes",
+          "Dedicated support"
+        ],
+        "cta": "Buy Enterprise"
+      }
+    ],
+    "popular_badge": "Most Popular"
+  },
+  "subscriptions": {
+    "overline": "Continuous monitoring",
+    "title": "Continuous monitoring for your site",
+    "subtitle": "After your report, keep your site continuously monitored with automatic scans.",
+    "coming_soon_badge": "Coming soon: Pre-paid packages, annual plans with discount, and more options",
+    "plans": [
+      {
+        "name": "Watch",
+        "price": "$499",
+        "price_usd": "~$29 USD",
+        "period": "/mo",
+        "features": [
+          "Automatic weekly re-scan",
+          "Trend dashboard",
+          "Alerts when your score drops",
+          "90-day history"
+        ]
+      },
+      {
+        "name": "Guard",
+        "price": "$1,499",
+        "price_usd": "~$89 USD",
+        "period": "/mo",
+        "popular": true,
+        "features": [
+          "Everything in Watch",
+          "Trust Badge on your site",
+          "Monthly attack simulation",
+          "Compliance tracking",
+          "Exportable reports"
+        ]
+      },
+      {
+        "name": "Shield",
+        "price": "$3,999",
+        "price_usd": "~$239 USD",
+        "period": "/mo",
+        "features": [
+          "Everything in Guard",
+          "Auto-Fix configurations",
+          "Priority re-scans",
+          "1 hour consulting/month",
+          "Dedicated support"
+        ]
+      }
+    ]
+  },
+  "managed": {
+    "overline": "Personalized help",
+    "title": "Need help?",
+    "subtitle": "Security experts + AI at your service. Contact us for custom management, configuration, and monitoring plans.",
+    "cta": "Contact now"
+  },
+  "consulting": {
+    "overline": "Remote consulting",
+    "title": "Security experts + AI at your service",
+    "subtitle": "We don't just give you a report. We help you implement every fix. 100% remote via video call.",
+    "packages": [
+      {
+        "name": "Quick Call",
+        "price": "$1,499",
+        "price_usd": "~$89 USD",
+        "duration": "30 minutes",
+        "description": "Report review with an expert. Questions and answers.",
+        "icon": "phone"
+      },
+      {
+        "name": "Config Review",
+        "price": "$2,999",
+        "price_usd": "~$179 USD",
+        "duration": "60 minutes",
+        "description": "Live review + implementation of up to 5 fixes on your Cloudflare\u00ae configuration.",
+        "icon": "settings"
+      },
+      {
+        "name": "Security Workshop",
+        "price": "$4,999",
+        "price_usd": "~$299 USD",
+        "duration": "2 hours",
+        "description": "Complete Cloudflare\u00ae security training + guided implementation.",
+        "icon": "graduation-cap"
+      },
+      {
+        "name": "Monthly Advisor",
+        "price": "$9,999",
+        "price_usd": "~$599 USD",
+        "duration": "4 hrs/month",
+        "description": "Dedicated advisor. Monthly reviews, priority fixes, continuous strategy.",
+        "icon": "users"
+      },
+      {
+        "name": "Managed Services",
+        "duration": "We manage your Cloudflare® account",
+        "description": "Configuration, monitoring, and management of your Cloudflare® infrastructure. Custom plans.",
+        "icon": "users",
+        "contact_only": true
+      }
+    ],
+    "note": "All sessions via Google Meet. Schedule through WhatsApp."
+  },
+  "compliance": {
+    "overline": "Compliance",
+    "title": "Map your security to regulatory frameworks",
+    "subtitle": "Add a compliance analysis to any Pro or Complete audit. 70 automated controls with evidence and remediation.",
+    "requires": "Requires Pro or Complete audit",
+    "credits_label": "credits",
+    "controls_label": "controls",
+    "frameworks": [
+      { "name": "PCI DSS 4.0", "credits": "800", "controls": "19", "region": "Global" },
+      { "name": "ISO 27001", "credits": "800", "controls": "15", "region": "Global" },
+      { "name": "SOC 2 Type II", "credits": "800", "controls": "12", "region": "USA" },
+      { "name": "LFPDPPP", "credits": "500", "controls": "12", "region": "Mexico" },
+      { "name": "GDPR", "credits": "800", "controls": "12", "region": "Europe" }
+    ],
+    "bundle": "Complete bundle (5 frameworks): 2,500 credits",
+    "bundle_savings": "Save 900 credits",
+    "bundle_controls": "70 controls \u2022 5 frameworks \u2022 1 unified report"
+  },
+  "faq": {
+    "overline": "FAQ",
+    "title": "Everything you need to know",
+    "items": [
+      {
+        "question": "Do I need to give you access to my Cloudflare® account?",
+        "answer": "For the free Quick Scan, no. We analyze your domain externally using public data. For Starter and Pro plans, yes — you need to provide a Zone ID and API Token with read-only permissions. For Auto-Fix (coming soon), write permissions will be required."
+      },
+      {
+        "question": "Will the simulated attacks affect my site?",
+        "answer": "No. Simulations run against Cloudflare® protections (WAF, Bot Management, DDoS Protection) — not against your origin server. Your site stays intact and running normally."
+      },
+      {
+        "question": "What payment methods do you accept?",
+        "answer": "We accept Visa, Mastercard, and American Express credit and debit cards (domestic and international), as well as OXXO cash payments and SPEI bank transfers for Mexico."
+      },
+      {
+        "question": "Are the reports legally valid?",
+        "answer": "Reports are advisory in nature and can be used as supplementary evidence in security audits. However, they do not replace a formal certified penetration testing audit."
+      },
+      {
+        "question": "How long does the analysis take?",
+        "answer": "The Quick Scan takes less than 60 seconds. The Starter plan takes 2-3 minutes. The Pro plan can take 5-10 minutes depending on active protections."
+      },
+      {
+        "question": "Can I use credits across different services?",
+        "answer": "Yes. Credits are universal: you can use them for reports, attack simulations, consulting sessions, and compliance add-ons. Credits never expire."
+      },
+      {
+        "question": "Is consulting in-person or remote?",
+        "answer": "100% remote. All sessions are via Google Meet. You can schedule from anywhere in the world through our online calendar."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Secure your site today",
+    "subtitle": "Start with a free scan. No credit card. No commitments.",
+    "button": "Free Scan",
+    "trust": "38+ security controls analyzed"
+  },
+  "footer": {
+    "brand": "Anga Security",
+    "tagline": "Protect. Simulate. Fix.",
+    "links": {
+      "product": "Product",
+      "features": "Features",
+      "pricing": "Pricing",
+      "consulting": "Consulting",
+      "compliance": "Compliance"
+    },
+    "legal": {
+      "title": "Legal",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "cookies": "Cookie Policy",
+      "refunds": "Refund & Credit Policy",
+      "cancellation": "Cancellation Policy"
+    },
+    "contact": {
+      "title": "Contact",
+      "email": "security@angaflow.com",
+      "whatsapp": "+52 55 5157 5041"
+    },
+    "copyright": "ANGA Mexico. All rights reserved.",
+    "powered": "Made in Mexico",
+    "disclaimer": "Cloudflare\u00ae is a registered trademark of Cloudflare, Inc. Anga Security is not affiliated with, endorsed by, or sponsored by Cloudflare, Inc."
+  },
+  "whatsapp": {
+    "message": "Hi! I'd like to learn more about Anga Security."
+  }
+}
